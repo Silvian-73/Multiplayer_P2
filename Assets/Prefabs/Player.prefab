@@ -144,6 +144,7 @@ MonoBehaviour:
   _character: {fileID: 0}
   _inventory: {fileID: 0}
   _equipment: {fileID: 0}
+  _progress: {fileID: 0}
   _statsManager: {fileID: 0}
 --- !u!114 &114519574189691728
 MonoBehaviour:
@@ -160,6 +161,11 @@ MonoBehaviour:
   Damage: 0
   Armor: 0
   MoveSpeed: 0
+  Level: 0
+  StatPoints: 0
+  Exp: 0
+  NextLevelExp: 0
+  Player: {fileID: 0}
 --- !u!114 &114716416402472184
 MonoBehaviour:
   m_ObjectHideFlags: 0

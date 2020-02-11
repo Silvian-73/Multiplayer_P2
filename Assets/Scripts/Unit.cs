@@ -6,9 +6,9 @@ using System;
 
 public class Unit : Interactable
 {
-    [SyncEvent] public event Action EventOnDamage;
-    [SyncEvent] public event Action EventOnDie;
-    [SyncEvent] public event Action EventOnRevive;
+    public event Action EventOnDamage;
+    public event Action EventOnDie;
+    public event Action EventOnRevive;
 
     [SerializeField] protected UnitMotor _motor;
     [SerializeField] protected UnitStats _stats;
@@ -59,31 +59,28 @@ public class Unit : Interactable
     {
         if (!isServer) Revive();
     }
-
-    [ClientCallback]
     protected virtual void Die()
     {
         _isDead = true;
         GetComponent<Collider>().enabled = false;
+        EventOnDie();
         if (isServer)
         {
             HasInteract = false;
             RemoveFocus();
             _motor.MoveToPoint(transform.position);
-            EventOnDie();
             RpcDie();
         }
     }
-    [ClientCallback]
     protected virtual void Revive()
     {
         _isDead = false;
         GetComponent<Collider>().enabled = false;
+        EventOnRevive();
         if (isServer)
         {
             HasInteract = true;
             _stats.SetHealthRate(1);
-            EventOnRevive();
             RpcRevive();
         }
     }
