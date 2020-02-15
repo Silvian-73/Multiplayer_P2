@@ -12,11 +12,13 @@ public class MyNetworkManager : NetworkManager
     public Action<string> registerResponse;
 
     public bool ServerMode;
+    private UserDataRepository _repository; 
     void Start()
     {
         if (ServerMode)
         {
             StartServer();
+            _repository = UserDataRepository.Instance;
             NetworkServer.UnregisterHandler(MsgType.Connect);
             NetworkServer.RegisterHandler(MsgType.Connect, OnServerConnectCustom);
             NetworkServer.RegisterHandler(MsgType.Highest + (short)NetMsgType.Login, OnServerLogin);
@@ -87,7 +89,8 @@ public class MyNetworkManager : NetworkManager
     IEnumerator LoginUser(NetworkMessage netMsg)
     {
         UserMessage msg = netMsg.ReadMessage<UserMessage>();
-        IEnumerator e = DCF.Login(msg.login, msg.pass);
+        //IEnumerator e = DCF.Login(msg.login, msg.pass);
+        IEnumerator e = _repository.Login(msg.login, msg.pass);
 
         while (e.MoveNext())
         {
@@ -110,8 +113,8 @@ public class MyNetworkManager : NetworkManager
     IEnumerator RegisterUser(NetworkMessage netMsg)
     {
         UserMessage msg = netMsg.ReadMessage<UserMessage>();
-        IEnumerator e = DCF.RegisterUser(msg.login, msg.pass, "");
-
+        //IEnumerator e = DCF.RegisterUser(msg.login, msg.pass, "");
+        IEnumerator e = _repository.RegisterUser(msg.login, msg.pass, ""); 
         while (e.MoveNext())
         {
             yield return e.Current;

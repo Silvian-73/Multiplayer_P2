@@ -73,8 +73,8 @@ public class Character : Unit
     }
     protected override void Revive()
     {
-        base.Revive();
         transform.position = _startPosition;
+        base.Revive();
         gfx.SetActive(true);
         if (isServer)
         {

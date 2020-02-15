@@ -345,13 +345,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 180882360}
   m_TextComponent: {fileID: 825467191}
   m_Placeholder: {fileID: 1970095615}
-  m_ContentType: 5
+  m_ContentType: 4
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 6
+  m_KeyboardType: 1
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 4
+  m_CharacterValidation: 3
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
@@ -469,7 +469,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enter text...
+  m_Text: Confirm password...
 --- !u!222 &373340499
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1672,7 +1672,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enter text...
+  m_Text: Enter username...
 --- !u!222 &994167728
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1949,7 +1949,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enter text...
+  m_Text: Enter password...
 --- !u!222 &1179379124
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2898,7 +2898,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enter text...
+  m_Text: Enter username...
 --- !u!222 &1970095616
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2975,7 +2975,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enter text...
+  m_Text: Enter password...
 --- !u!222 &2010029130
 CanvasRenderer:
   m_ObjectHideFlags: 0
