@@ -75,7 +75,7 @@ public class Unit : Interactable
     protected virtual void Revive()
     {
         _isDead = false;
-        GetComponent<Collider>().enabled = false;
+        GetComponent<Collider>().enabled = true;
         EventOnRevive();
         if (isServer)
         {

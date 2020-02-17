@@ -1986,12 +1986,12 @@ GameObject:
   - component: {fileID: 8948975879366018846}
   - component: {fileID: 8948975879366018847}
   - component: {fileID: 114100114540559552}
-  - component: {fileID: 1448263999954723916}
   - component: {fileID: 1682541130127772796}
   - component: {fileID: 1379231264577990251}
   - component: {fileID: 5763238330453320917}
   - component: {fileID: 3575549396394454165}
   - component: {fileID: 8542269402967629195}
+  - component: {fileID: 1448263999954723916}
   - component: {fileID: 8171544385888090545}
   - component: {fileID: 5966563618954185558}
   - component: {fileID: 8143523797753283246}
@@ -2060,24 +2060,6 @@ MonoBehaviour:
     _baseValue: 0
   MoveSpeed:
     _baseValue: 5
---- !u!143 &1448263999954723916
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8948975879366018842}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2.48
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.24, z: 0}
 --- !u!114 &1682541130127772796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2187,6 +2169,24 @@ MonoBehaviour:
   _disableBehaviours:
   - {fileID: 114426524217215502}
   - {fileID: 8409882646515517479}
+--- !u!143 &1448263999954723916
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8948975879366018842}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2.48
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1.24, z: 0}
 --- !u!65 &8171544385888090545
 BoxCollider:
   m_ObjectHideFlags: 0
