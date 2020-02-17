@@ -9,11 +9,20 @@ public class Inventory : NetworkBehaviour
 
     public SyncListItem Items = new SyncListItem();
 
+    private UserData _data;
+
     public override void OnStartLocalPlayer()
     {
         Items.Callback += ItemChanged;
     }
-
+    public void Load(UserData data)
+    {
+        _data = data;
+        for (int i = 0; i < data.Inventory.Count; i++)
+        {
+            Items.Add(ItemBase.GetItem(data.Inventory[i]));
+        }
+    }
     private void ItemChanged(SyncList<Item>.Operation op, int itemIndex)
     {
         OnItemChanged(op, itemIndex);
@@ -24,6 +33,7 @@ public class Inventory : NetworkBehaviour
         if (Items.Count < Space)
         {
             Items.Add(item);
+            _data.Inventory.Add(ItemBase.GetItemId(item));
             return true;
         }
         else return false;
@@ -40,7 +50,7 @@ public class Inventory : NetworkBehaviour
         if (Items[index] != null)
         {
             Drop(Items[index]);
-            Items.RemoveAt(index);
+            RemoveItem(Items[index]);
         }
     }
 
@@ -68,5 +78,6 @@ public class Inventory : NetworkBehaviour
     public void RemoveItem(Item item)
     {
         Items.Remove(item);
+        _data.Inventory.Remove(ItemBase.GetItemId(item));
     }
 }

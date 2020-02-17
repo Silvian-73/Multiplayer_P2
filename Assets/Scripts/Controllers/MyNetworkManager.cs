@@ -88,9 +88,13 @@ public class MyNetworkManager : NetworkManager
     }
     IEnumerator LoginUser(NetworkMessage netMsg)
     {
-        UserMessage msg = netMsg.ReadMessage<UserMessage>();
+        //UserMessage msg = netMsg.ReadMessage<UserMessage>();
         //IEnumerator e = DCF.Login(msg.login, msg.pass);
-        IEnumerator e = _repository.Login(msg.login, msg.pass);
+        //IEnumerator e = _repository.Login(msg.login, msg.pass);
+
+        UserAccount account = new UserAccount(netMsg.conn);
+        UserMessage msg = netMsg.ReadMessage<UserMessage>();
+        IEnumerator e = account.LoginUser(msg.login, msg.pass);
 
         while (e.MoveNext())
         {
@@ -133,32 +137,5 @@ public class MyNetworkManager : NetworkManager
             client.RegisterHandler(MsgType.Highest + (short)NetMsgType.Login, OnClientLogin);
             client.RegisterHandler(MsgType.Highest + (short)NetMsgType.Register, OnClientRegister);
         }
-    }
-}
-public class UserMessage : MessageBase
-{
-    public string login;
-    public string pass;
-
-    public UserMessage()
-    {
-    }
-
-    public UserMessage(string login, string pass)
-    {
-        this.login = login;
-        this.pass = pass;
-    }
-
-    public override void Deserialize(NetworkReader reader)
-    {
-        login = reader.ReadString();
-        pass = reader.ReadString();
-    }
-
-    public override void Serialize(NetworkWriter writer)
-    {
-        writer.Write(login);
-        writer.Write(pass);
     }
 }

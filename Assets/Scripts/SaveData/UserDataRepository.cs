@@ -18,6 +18,7 @@ public class UserDataRepository : Singleton<UserDataRepository>
     {
         Load();
     }
+
     public void Save()
     {
         if (!Directory.Exists(Path.Combine(_path)))
@@ -105,6 +106,49 @@ public class UserDataRepository : Singleton<UserDataRepository>
             _users.Users.Add(tempUser);
             Save();
             yield return SUCCESS;
+        }
+    }
+
+    public IEnumerator<string> SetUserData(string userName, string password, string data)
+    {
+        bool userExist = false;
+        SerializableUserObject targetUser;
+        foreach (SerializableUserObject user in _users.Users)
+        {
+            if (user.UserName == userName)
+            {
+                userExist = true;
+                targetUser = user;
+            }
+        }
+        if (!userExist)
+        {
+            yield return USERERROR;
+        }
+        else
+        {
+            targetUser.Data = data;
+            Save();
+            yield return SUCCESS;
+        }
+    }
+
+    public IEnumerator<string> GetUserData(string userName, string password)
+    {
+        bool userExist = false;
+        string targetData;
+        foreach (SerializableUserObject user in _users.Users)
+        {
+            if (user.UserName == userName)
+            {
+                userExist = true;
+                targetData = user.Data;
+                yield return user.Data;
+            }
+        }
+        if (!userExist)
+        {
+            yield return USERERROR;
         }
     }
 }

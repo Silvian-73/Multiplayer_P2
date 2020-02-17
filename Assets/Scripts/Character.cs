@@ -23,8 +23,18 @@ public class Character : Unit
 
     void Start()
     {
-        _startPosition = transform.position;
+        _startPosition = Vector3.zero;
         _reviveTime = _reviveDelay;
+
+        if (Stats.CurHealth == 0)
+        {
+            transform.position = _startPosition;
+            if (isServer)
+            {
+                Stats.SetHealthRate(1);
+                _motor.MoveToPoint(_startPosition);
+            }
+        }
     }
 
     void Update()

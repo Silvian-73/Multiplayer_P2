@@ -2,13 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//[Serializable]
-//public struct SerializableUserObjectArray
-//{
-//    public int Count;
-//    public SerializableUserObject[] Users;
-//}
-
 [Serializable]
 public struct SerializableUserObjectList
 {

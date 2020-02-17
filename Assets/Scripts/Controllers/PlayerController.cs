@@ -67,9 +67,4 @@ public class PlayerController : NetworkBehaviour {
     {
         _character.SetNewFocus(newFocus.GetComponent<Interactable>());
     }
-
-    private void OnDestroy() 
-    {
-        if (_character != null) Destroy(_character.gameObject);
-    }
 }
