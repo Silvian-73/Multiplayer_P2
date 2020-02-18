@@ -15,6 +15,10 @@ public struct SerializableUserObject
     public string Password;
     public string Data;
 
+    public void SetData (string newData)
+    {
+        Data = newData;
+    }
     public override string ToString()
     {
         return $"UserName = {UserName}; Password = {Password}; Data = {Data};";

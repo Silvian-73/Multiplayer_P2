@@ -112,13 +112,13 @@ public class UserDataRepository : Singleton<UserDataRepository>
     public IEnumerator<string> SetUserData(string userName, string password, string data)
     {
         bool userExist = false;
-        SerializableUserObject targetUser;
+
         foreach (SerializableUserObject user in _users.Users)
         {
             if (user.UserName == userName)
             {
                 userExist = true;
-                targetUser = user;
+                user.SetData(data);
             }
         }
         if (!userExist)
@@ -127,7 +127,6 @@ public class UserDataRepository : Singleton<UserDataRepository>
         }
         else
         {
-            targetUser.Data = data;
             Save();
             yield return SUCCESS;
         }
@@ -136,13 +135,11 @@ public class UserDataRepository : Singleton<UserDataRepository>
     public IEnumerator<string> GetUserData(string userName, string password)
     {
         bool userExist = false;
-        string targetData;
         foreach (SerializableUserObject user in _users.Users)
         {
             if (user.UserName == userName)
             {
                 userExist = true;
-                targetData = user.Data;
                 yield return user.Data;
             }
         }
