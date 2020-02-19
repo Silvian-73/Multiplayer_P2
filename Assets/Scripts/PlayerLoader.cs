@@ -10,10 +10,24 @@ public class PlayerLoader : NetworkBehaviour
     public Character CreateCharacter()
     {
         UserAccount acc = AccountManager.GetAccount(connectionToClient);
-        GameObject unit = Instantiate(_unitPrefab, acc.Data.PosCharacter, Quaternion.identity);
+        GameObject unit;
+        Character tempCharacter;
+        if (acc.Data.JustCreated)
+        {
+            unit = Instantiate(_unitPrefab, transform.position, Quaternion.identity, transform);
+            acc.Data.JustCreated = false;
+            acc.Data.PosCharacter = transform.position;
+            acc.Data.SpawnPosition = transform.position;
+        }
+        else
+        {
+            unit = Instantiate(_unitPrefab, acc.Data.PosCharacter, Quaternion.identity, transform);
+        }
+        tempCharacter = unit.GetComponent<Character>();
+        tempCharacter.SetRespawnPosition(acc.Data.SpawnPosition);
         NetworkServer.Spawn(unit);
         TargetLinkCharacter(connectionToClient, unit.GetComponent<NetworkIdentity>());
-        return unit.GetComponent<Character>();
+        return tempCharacter;
     }
 
     public override void OnStartAuthority()

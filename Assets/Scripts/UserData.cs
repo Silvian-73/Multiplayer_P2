@@ -7,7 +7,9 @@ using UnityEngine.Networking;
 [Serializable]
 public class UserData
 {
+    public bool JustCreated = true;
     public Vector3 PosCharacter;
+    public Vector3 SpawnPosition;
     public List<int> Inventory = new List<int>();
     public List<int> Equipment = new List<int>();
 

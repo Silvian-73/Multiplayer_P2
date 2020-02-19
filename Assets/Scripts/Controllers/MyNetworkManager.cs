@@ -88,10 +88,6 @@ public class MyNetworkManager : NetworkManager
     }
     IEnumerator LoginUser(NetworkMessage netMsg)
     {
-        //UserMessage msg = netMsg.ReadMessage<UserMessage>();
-        //IEnumerator e = DCF.Login(msg.login, msg.pass);
-        //IEnumerator e = _repository.Login(msg.login, msg.pass);
-
         UserAccount account = new UserAccount(netMsg.conn);
         UserMessage msg = netMsg.ReadMessage<UserMessage>();
         IEnumerator e = account.LoginUser(msg.login, msg.pass);

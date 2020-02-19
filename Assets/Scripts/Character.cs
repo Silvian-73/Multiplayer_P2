@@ -8,6 +8,7 @@ public class Character : Unit
     public Player Player;
 
     private Vector3 _startPosition;
+    private Vector3 _respawnPosition;
     [SerializeField] private float _reviveDelay = 5f;
     private float _reviveTime;
 
@@ -23,7 +24,7 @@ public class Character : Unit
 
     void Start()
     {
-        _startPosition = Vector3.zero;
+        _startPosition = transform.position;
         _reviveTime = _reviveDelay;
 
         if (Stats.CurHealth == 0)
@@ -83,12 +84,12 @@ public class Character : Unit
     }
     protected override void Revive()
     {
-        transform.position = _startPosition;
+        transform.position = _respawnPosition;
         base.Revive();
         gfx.SetActive(true);
         if (isServer)
         {
-            SetMovePoint(_startPosition);
+            SetMovePoint(_respawnPosition);
         }
     }
 
@@ -108,5 +109,9 @@ public class Character : Unit
                 SetFocus(newFocus);
             }
         }
+    }
+    public void SetRespawnPosition(Vector3 newPosition)
+    {
+        _respawnPosition = newPosition;
     }
 }
