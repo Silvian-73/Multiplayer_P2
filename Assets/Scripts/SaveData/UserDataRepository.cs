@@ -18,7 +18,8 @@ public class UserDataRepository : Singleton<UserDataRepository>
     {
         Load();
     }
-    public void Save()
+
+    private void Save()
     {
         if (!Directory.Exists(Path.Combine(_path)))
         {
@@ -29,7 +30,7 @@ public class UserDataRepository : Singleton<UserDataRepository>
             _data.Save(_users, Path.Combine(_path, _fileName));
         }
     }
-    public void Load()
+    private void Load()
     {
         _path = Path.Combine(Application.dataPath, _folderName);
         if (!Directory.Exists(Path.Combine(_path)))
@@ -105,6 +106,50 @@ public class UserDataRepository : Singleton<UserDataRepository>
             _users.Users.Add(tempUser);
             Save();
             yield return SUCCESS;
+        }
+    }
+
+    public IEnumerator<string> SetUserData(string userName, string password, string data)
+    {
+        bool userExist = false;
+        int targetUser = 0;
+
+        foreach (SerializableUserObject user in _users.Users)
+        {
+            if (user.UserName == userName)
+            {
+                userExist = true;
+                targetUser =_users.Users.IndexOf(user);
+            }
+        }
+        if (!userExist)
+        {
+            yield return USERERROR;
+        }
+        else
+        {
+            _users.Users.RemoveAt(targetUser);
+            SerializableUserObject tempUser = new SerializableUserObject { UserName = userName, Password = password, Data = data };
+            _users.Users.Add(tempUser);
+            Save();
+            yield return SUCCESS;
+        }
+    }
+
+    public IEnumerator<string> GetUserData(string userName, string password)
+    {
+        bool userExist = false;
+        foreach (SerializableUserObject user in _users.Users)
+        {
+            if (user.UserName == userName)
+            {
+                userExist = true;
+                yield return user.Data;
+            }
+        }
+        if (!userExist)
+        {
+            yield return USERERROR;
         }
     }
 }

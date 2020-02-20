@@ -8,32 +8,35 @@ public class UnitStats : NetworkBehaviour
     public Stat Damage;
     public Stat Armor;
     public Stat MoveSpeed;
-    public override void OnStartServer()
-    {
-        _curHealth = _maxHealth;
-    }
 
-    public int CurHealth 
-    { 
+
+    public virtual int CurHealth
+    {
         get 
         { 
-            return _curHealth;
-        } 
+            return _curHealth; 
+        }
+        protected set 
+        { 
+            _curHealth = value; 
+        }
     }
-    public void SetHealthRate(float rate)
-    {
-        _curHealth = rate == 0 ? 0 : (int)(_maxHealth / rate);
-    }
+
     public virtual void TakeDamage(int damage)
     {
         damage -= Armor.GetValue();
         if (damage > 0)
         {
-            _curHealth -= damage;
-            if (_curHealth <= 0)
+            CurHealth -= damage;
+            if (CurHealth <= 0)
             {
-                _curHealth = 0;
+                CurHealth = 0;
             }
-        } 
+        }
+    }
+
+    public void SetHealthRate(float rate)
+    {
+        CurHealth = rate == 0 ? 0 : (int)(_maxHealth / rate);
     }
 }

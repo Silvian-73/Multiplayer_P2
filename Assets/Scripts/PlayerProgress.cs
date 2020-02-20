@@ -9,6 +9,8 @@ public class PlayerProgress : MonoBehaviour
     private float _exp;
     private float _nextLevelExp = 100;
 
+    private UserData _data;
+
     private StatsManager _manager;
     public StatsManager Manager
     {
@@ -21,13 +23,27 @@ public class PlayerProgress : MonoBehaviour
             _manager.StatPoints = _statPoints;
         }
     }
+    public void Load(UserData data)
+    {
+        _data = data;
+        if (_data.Level > 0)
+        {
+            _level = _data.Level;
+        }
 
+        _statPoints = _data.StatPoints;
+        _exp = _data.Exp;
+        if (_data.NextLevelExp > 0)
+        {
+            _nextLevelExp = _data.NextLevelExp;
+        }
+    }
     public void AddExp(float addExp)
     {
-        _exp += addExp;
+        _data.Exp = _exp += addExp;
         while (_exp >= _nextLevelExp)
         {
-            _exp -= _nextLevelExp;
+            _data.Exp = _exp -= _nextLevelExp;
             LevelUP();
         }
         if (_manager != null)
@@ -40,15 +56,15 @@ public class PlayerProgress : MonoBehaviour
     }
     private void LevelUP()
     {
-        _level++;
-        _nextLevelExp += 100f;
-        _statPoints += 3;
+        _data.Level = ++_level;
+        _data.NextLevelExp = _nextLevelExp += 100f;
+        _data.StatPoints = _statPoints += 3;
     }
     public bool RemoveStatPoint()
     {
         if (_statPoints > 0)
         {
-            _statPoints--;
+            _data.StatPoints = --_statPoints;
             if (_manager != null) _manager.StatPoints = _statPoints;
             return true;
         }
