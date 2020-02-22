@@ -20,9 +20,10 @@ public class UnitMotor : MonoBehaviour
     {
         _agent.SetDestination(point);
     }
-    public void FollowTarget(Interactable newTarget)
+
+    public void FollowTarget(Interactable newTarget, float interactDistance)
     {
-        _agent.stoppingDistance = newTarget.Radius;
+        _agent.stoppingDistance = interactDistance;
         _target = newTarget.InteractionTransform;
     }
     public void StopFollowingTarget()

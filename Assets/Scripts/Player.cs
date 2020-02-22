@@ -39,6 +39,18 @@ public class Player : MonoBehaviour
             return _progress;
         }
     }
+    public NetworkConnection Conn 
+    { 
+        get 
+        { 
+            if (_conn == null) 
+            { 
+                _conn = GetComponent<NetworkIdentity>().connectionToClient;
+            } 
+            return _conn; 
+        } 
+    }
+    private NetworkConnection _conn;
 
     public void Setup(Character character, Inventory inventory, Equipment equipment, bool isLocalPlayer)
     {

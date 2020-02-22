@@ -53,6 +53,7 @@ GameObject:
   - component: {fileID: 8598264362289284681}
   - component: {fileID: 3438877520819770068}
   - component: {fileID: 5174849909207806231}
+  - component: {fileID: 114353810751953912}
   m_Layer: 0
   m_Name: GhostEnemy_Green
   m_TagString: Untagged
@@ -253,7 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractionTransform: {fileID: 3349102588699146489}
-  Radius: 2
+  _radius: 2
   _motor: {fileID: 3349102588699146434}
   _stats: {fileID: 3349102588699146433}
   _moveRadius: 10
@@ -262,6 +263,7 @@ MonoBehaviour:
   _aggressive: 1
   _rewardExp: 50
   _viewDistance: 5
+  _agroDistance: 5
   _reviveDelay: 5
 --- !u!114 &613011475582273655
 MonoBehaviour:
@@ -302,6 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2744683b7c4e1458e5d915c60ad99c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackDistance: 0
   _attackSpeed: 1
 --- !u!114 &5174849909207806231
 MonoBehaviour:
@@ -318,6 +321,23 @@ MonoBehaviour:
   _animator: {fileID: 8973237851862999967}
   _unit: {fileID: 3349102588699146432}
   _combat: {fileID: 3438877520819770068}
+--- !u!114 &114353810751953912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3349102588699146488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f1f714e69c5d084994b5c4da8e05390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _visRange: 35
+  _visUpdateInterval: 1
+  _visMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &9067249950018582707
 GameObject:
   m_ObjectHideFlags: 0

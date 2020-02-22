@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 8300898043642873117}
   - component: {fileID: 410201881185830034}
   - component: {fileID: 7132658721865807253}
+  - component: {fileID: 114871348333729520}
   m_Layer: 0
   m_Name: RedSword
   m_TagString: Untagged
@@ -213,6 +214,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractionTransform: {fileID: 6072943691806358952}
-  Radius: 2
+  _radius: 2
   Item: {fileID: 11400000, guid: 6bbb512a8fc098c4aad8f23fb2e14227, type: 2}
   Lifetime: 10
+--- !u!114 &114871348333729520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9179396069026346411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f1f714e69c5d084994b5c4da8e05390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _visRange: 35
+  _visUpdateInterval: 1
+  _visMask:
+    serializedVersion: 2
+    m_Bits: 1024

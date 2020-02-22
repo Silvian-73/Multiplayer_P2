@@ -12,6 +12,7 @@ public class Unit : Interactable
 
     [SerializeField] protected UnitMotor _motor;
     [SerializeField] protected UnitStats _stats;
+    protected float _interactDistance;
     protected bool _isDead;
     protected Interactable _focus;
 
@@ -89,13 +90,20 @@ public class Unit : Interactable
         if (newFocus != _focus)
         {
             _focus = newFocus;
-            _motor.FollowTarget(newFocus);
+            _interactDistance = _focus.GetInteractDistance(gameObject);
+            _motor.FollowTarget(newFocus, _interactDistance);
         }
     }
     protected virtual void RemoveFocus()
     {
         _focus = null;
         _motor.StopFollowingTarget();
+    }
+
+    public override float GetInteractDistance(GameObject user)
+    {
+        Combat combat = user.GetComponent<Combat>();
+        return base.GetInteractDistance(user) + (combat != null ? combat.AttackDistance : 0f);
     }
     public override bool Interact(GameObject user)
     {

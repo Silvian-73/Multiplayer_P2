@@ -482,6 +482,7 @@ GameObject:
   - component: {fileID: 6436978567269329386}
   - component: {fileID: 3234743129768189080}
   - component: {fileID: 8383858757763542514}
+  - component: {fileID: 114733477666035984}
   m_Layer: 0
   m_Name: GhostEnemy_Brown
   m_TagString: Untagged
@@ -682,7 +683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractionTransform: {fileID: 5379758600184704331}
-  Radius: 2
+  _radius: 2
   _motor: {fileID: 5379758600184704368}
   _stats: {fileID: 5379758600184704371}
   _moveRadius: 10
@@ -691,6 +692,7 @@ MonoBehaviour:
   _aggressive: 1
   _rewardExp: 50
   _viewDistance: 5
+  _agroDistance: 5
   _reviveDelay: 5
 --- !u!114 &7805582916784594373
 MonoBehaviour:
@@ -731,6 +733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2744683b7c4e1458e5d915c60ad99c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackDistance: 0
   _attackSpeed: 1
 --- !u!114 &8383858757763542514
 MonoBehaviour:
@@ -747,6 +750,23 @@ MonoBehaviour:
   _animator: {fileID: 4074404059597559026}
   _unit: {fileID: 5379758600184704370}
   _combat: {fileID: 3234743129768189080}
+--- !u!114 &114733477666035984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5379758600184704330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f1f714e69c5d084994b5c4da8e05390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _visRange: 35
+  _visUpdateInterval: 1
+  _visMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &5379758601658492968
 GameObject:
   m_ObjectHideFlags: 0

@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 5337744887337616786}
   - component: {fileID: 3117395883475757772}
   - component: {fileID: 114142320654917544}
+  - component: {fileID: 114443338504325520}
   m_Layer: 0
   m_Name: BatEnemy_Red
   m_TagString: Untagged
@@ -254,7 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractionTransform: {fileID: 5252394320699385998}
-  Radius: 2
+  _radius: 2
   _motor: {fileID: 5252394320699386037}
   _stats: {fileID: 5252394320699386038}
   _moveRadius: 10
@@ -263,6 +264,7 @@ MonoBehaviour:
   _aggressive: 1
   _rewardExp: 50
   _viewDistance: 5
+  _agroDistance: 5
   _reviveDelay: 5
 --- !u!114 &7935339731951409152
 MonoBehaviour:
@@ -303,6 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2744683b7c4e1458e5d915c60ad99c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackDistance: 0
   _attackSpeed: 1
 --- !u!114 &3117395883475757772
 MonoBehaviour:
@@ -334,6 +337,23 @@ MonoBehaviour:
   _dropItems:
   - Item: {fileID: 11400000, guid: 75360a548598bde4ab96e92bcbf5b5ea, type: 2}
     Rate: 50
+--- !u!114 &114443338504325520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5252394320699385999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f1f714e69c5d084994b5c4da8e05390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _visRange: 35
+  _visUpdateInterval: 1
+  _visMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &8598778376742143279
 GameObject:
   m_ObjectHideFlags: 0

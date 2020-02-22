@@ -16,7 +16,8 @@ public class Enemy : Unit
     [Header("Behavior")]
     [SerializeField] private bool _aggressive;
     [SerializeField] private float _rewardExp;
-    [SerializeField] private float _viewDistance = 5f;
+    [SerializeField] private float _viewDistance = 8f;
+    [SerializeField] private float _agroDistance = 5f;
     [SerializeField] private float _reviveDelay = 5f;
 
     private float _reviveTime;
@@ -61,7 +62,7 @@ public class Enemy : Unit
             {
                 RemoveFocus();
             }
-            else if (distance <= _focus.Radius)
+            else if (distance <= _interactDistance)
             {
                 if (!_focus.Interact(gameObject))
                 {
@@ -108,7 +109,7 @@ public class Enemy : Unit
     }
     void FindEnemy()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position,_viewDistance, 1 << LayerMask.NameToLayer("Player"));
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _agroDistance, 1 << LayerMask.NameToLayer("Player"));
         for (int i = 0; i < colliders.Length; i++)
         {
             Interactable interactable = colliders[i].GetComponent<Interactable>();
