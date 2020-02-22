@@ -2090,7 +2090,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _disableBehaviours:
   - {fileID: 114426524217215502}
-  - {fileID: 0}
+  - {fileID: 6587856680919330074}
 --- !u!143 &1448263999954723916
 CharacterController:
   m_ObjectHideFlags: 0
