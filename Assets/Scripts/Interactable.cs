@@ -12,7 +12,7 @@ public class Interactable : NetworkBehaviour
         { 
             return _hasInteract; 
         }
-        protected set 
+        set 
         { 
             _hasInteract = value; 
         }

@@ -34,6 +34,14 @@ public class UnitStats : NetworkBehaviour
             }
         }
     }
+    public void AddHealth(int amount)
+    {
+        CurHealth += amount;
+        if (CurHealth > _maxHealth)
+        {
+            CurHealth = _maxHealth;
+        }
+    }
 
     public void SetHealthRate(float rate)
     {

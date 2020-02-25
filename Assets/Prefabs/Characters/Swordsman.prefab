@@ -1998,6 +1998,9 @@ GameObject:
   - component: {fileID: 114051063119811626}
   - component: {fileID: 114426524217215502}
   - component: {fileID: 114397630053738378}
+  - component: {fileID: 7799786196082238775}
+  - component: {fileID: 7275873422297267665}
+  - component: {fileID: 9034167215775371443}
   m_Layer: 10
   m_Name: Swordsman
   m_TagString: Untagged
@@ -2258,6 +2261,11 @@ MonoBehaviour:
   _radius: 2
   _motor: {fileID: 114051063119811626}
   _stats: {fileID: 114100114540559552}
+  UnitSkills:
+    _skills:
+    - {fileID: 7799786196082238775}
+    - {fileID: 7275873422297267665}
+    - {fileID: 9034167215775371443}
   Player: {fileID: 0}
   _reviveDelay: 1
   gfx: {fileID: 8948975879563968785}
@@ -2278,6 +2286,68 @@ MonoBehaviour:
   _visMask:
     serializedVersion: 2
     m_Bits: 1024
+--- !u!114 &7799786196082238775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8948975879366018842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f72592b1bdc58534aa2dfa7082e4f38e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300006, guid: 9b36398ba5aa47940bdd92db1e4b0d4e, type: 3}
+  _castTime: 0
+  _cooldown: 10
+  CastDelay: 0
+  CooldownDelay: 0
+  _damage: 100
+  _radius: 2
+  _enemyMask:
+    serializedVersion: 2
+    m_Bits: 1
+  _auraEffect: {fileID: 7846161810538525841, guid: 1a93f3de9bf989645a02b1b2596711c9,
+    type: 3}
+--- !u!114 &7275873422297267665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8948975879366018842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0500bd2b6e3d76d4ea3b9f21966aecd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300008, guid: 9b36398ba5aa47940bdd92db1e4b0d4e, type: 3}
+  _castTime: 0.2
+  _cooldown: 0.8
+  CastDelay: 0
+  CooldownDelay: 0
+  _warpDistance: 7
+--- !u!114 &9034167215775371443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8948975879366018842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2709d8bbe8cd74428726eb45821e61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300010, guid: 9b36398ba5aa47940bdd92db1e4b0d4e, type: 3}
+  _castTime: 0
+  _cooldown: 5
+  CastDelay: 0
+  CooldownDelay: 0
+  _healAmount: 15
+  _particle: {fileID: 3695037909366933349, guid: 18995b13a7338604bbc7291cec1eb20b,
+    type: 3}
 --- !u!1 &8948975879563968785
 GameObject:
   m_ObjectHideFlags: 0

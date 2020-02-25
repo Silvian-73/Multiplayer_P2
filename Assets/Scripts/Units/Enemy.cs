@@ -22,6 +22,7 @@ public class Enemy : Unit
 
     private float _reviveTime;
     private List<Character> _enemies = new List<Character>();
+    private Collider[] _bufferColliders = new Collider[64];
 
     void Start()
     {
@@ -84,7 +85,7 @@ public class Enemy : Unit
     {
         _curDistanation = Quaternion.AngleAxis(Random.Range(0f, 360f), Vector3.up) *
         new Vector3(_moveRadius, 0, 0) + _startPosition;
-        _motor.MoveToPoint(_curDistanation);
+        Motor.MoveToPoint(_curDistanation);
     }
     protected override void Die()
     {
@@ -104,38 +105,38 @@ public class Enemy : Unit
         base.Revive();
         if (isServer)
         {
-            _motor.MoveToPoint(_startPosition);
+            Motor.MoveToPoint(_startPosition);
         }
     }
     void FindEnemy()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, _agroDistance, 1 << LayerMask.NameToLayer("Player"));
-        for (int i = 0; i < colliders.Length; i++)
+        Physics.OverlapSphereNonAlloc(transform.position, _agroDistance, _bufferColliders, 1 << LayerMask.NameToLayer("Player"));
+        for (int i = 0; i < _bufferColliders.Length; i++)
         {
-            Interactable interactable = colliders[i].GetComponent<Interactable>();
-            if (interactable != null && interactable.HasInteract)
+            if (_bufferColliders[i] != null)
             {
-                SetFocus(interactable);
-                break;
-            }
+                Interactable interactable = _bufferColliders[i].GetComponent<Interactable>();
+                if (interactable != null && interactable.HasInteract)
+                {
+                    SetFocus(interactable);
+                    break;
+                }
+            } 
         }
     }
-    public override bool Interact(GameObject user)
-    {
-        if (base.Interact(user))
-        {
-            SetFocus(user.GetComponent<Interactable>());
-            return true;
-        }
-        return false;
-    }
+    
     protected override void DamageWithCombat(GameObject user)
     {
         base.DamageWithCombat(user);
-        Character character = user.GetComponent<Character>();
-        if (character != null && !_enemies.Contains(character))
+        Unit enemy = user.GetComponent<Unit>();
+        if (enemy != null)
         {
-            _enemies.Add(character);
+            SetFocus(enemy.GetComponent<Interactable>());
+            Character character = enemy as Character;
+            if (character != null && !_enemies.Contains(character))
+            {
+                _enemies.Add(character);
+            }
         }
     }
     protected override void OnDrawGizmosSelected()
