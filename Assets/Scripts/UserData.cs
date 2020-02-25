@@ -7,6 +7,7 @@ using UnityEngine.Networking;
 [Serializable]
 public class UserData
 {
+    public NetworkHash128 CharacterHash = new NetworkHash128();
     public bool JustCreated = true;
     public Vector3 PosCharacter;
     public Vector3 SpawnPosition;

@@ -14,11 +14,11 @@ public class UserDataRepository : Singleton<UserDataRepository>
     const string SUCCESS = "Success";
     const string USERERROR = "UserError";
     const string PASSERROR = "PassError";
+
     private void Awake()
     {
         Load();
     }
-
     private void Save()
     {
         if (!Directory.Exists(Path.Combine(_path)))
@@ -50,6 +50,7 @@ public class UserDataRepository : Singleton<UserDataRepository>
     }
     public IEnumerator<string> Login (string userName, string password)
     {
+        Load();
         if (_users.Users.Count == 0)
         {
             yield return USERERROR;
@@ -85,6 +86,7 @@ public class UserDataRepository : Singleton<UserDataRepository>
 
     public IEnumerator<string> RegisterUser (string userName, string password, string data)
     {
+        Load();
         bool userExist = false;
         foreach (SerializableUserObject user in _users.Users)
         {

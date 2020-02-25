@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 7238715251922801136}
   - component: {fileID: 6596882056881389851}
   - component: {fileID: 114005552026205274}
+  - component: {fileID: 114875237943043016}
   m_Layer: 0
   m_Name: BatEnemy_Violet
   m_TagString: Untagged
@@ -223,7 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractionTransform: {fileID: 3263726066048761866}
-  Radius: 2
+  _radius: 2
   _motor: {fileID: 3263726066048761905}
   _stats: {fileID: 3263726066048761906}
   _moveRadius: 10
@@ -232,6 +233,7 @@ MonoBehaviour:
   _aggressive: 1
   _rewardExp: 50
   _viewDistance: 5
+  _agroDistance: 5
   _reviveDelay: 5
 --- !u!114 &842358052913164420
 MonoBehaviour:
@@ -272,6 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2744683b7c4e1458e5d915c60ad99c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackDistance: 0
   _attackSpeed: 1
 --- !u!114 &6596882056881389851
 MonoBehaviour:
@@ -303,6 +306,23 @@ MonoBehaviour:
   _dropItems:
   - Item: {fileID: 11400000, guid: 75360a548598bde4ab96e92bcbf5b5ea, type: 2}
     Rate: 50
+--- !u!114 &114875237943043016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3263726066048761867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f1f714e69c5d084994b5c4da8e05390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _visRange: 35
+  _visUpdateInterval: 1
+  _visMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &3263726066726684009
 GameObject:
   m_ObjectHideFlags: 0

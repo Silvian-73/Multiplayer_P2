@@ -1997,8 +1997,9 @@ GameObject:
   - component: {fileID: 8143523797753283246}
   - component: {fileID: 114051063119811626}
   - component: {fileID: 114426524217215502}
+  - component: {fileID: 114397630053738378}
   m_Layer: 10
-  m_Name: PlayerUnit
+  m_Name: Swordsman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2057,9 +2058,9 @@ MonoBehaviour:
   Damage:
     _baseValue: 10
   Armor:
-    _baseValue: 0
+    _baseValue: 2
   MoveSpeed:
-    _baseValue: 5
+    _baseValue: 4
 --- !u!114 &1682541130127772796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2212,6 +2213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2744683b7c4e1458e5d915c60ad99c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackDistance: 0
   _attackSpeed: 1
 --- !u!114 &8143523797753283246
 MonoBehaviour:
@@ -2253,12 +2255,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractionTransform: {fileID: 8948975879366018846}
-  Radius: 2
+  _radius: 2
   _motor: {fileID: 114051063119811626}
   _stats: {fileID: 114100114540559552}
   Player: {fileID: 0}
   _reviveDelay: 1
   gfx: {fileID: 8948975879563968785}
+--- !u!114 &114397630053738378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8948975879366018842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f1f714e69c5d084994b5c4da8e05390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _visRange: 35
+  _visUpdateInterval: 1
+  _visMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &8948975879563968785
 GameObject:
   m_ObjectHideFlags: 0

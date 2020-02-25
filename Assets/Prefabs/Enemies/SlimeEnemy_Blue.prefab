@@ -671,6 +671,7 @@ GameObject:
   - component: {fileID: 1450584284790303579}
   - component: {fileID: 271702481078178456}
   - component: {fileID: 1522036759616602641}
+  - component: {fileID: 114910065819055442}
   m_Layer: 0
   m_Name: SlimeEnemy_Blue
   m_TagString: Untagged
@@ -871,7 +872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractionTransform: {fileID: 6939626936724011785}
-  Radius: 2
+  _radius: 2
   _motor: {fileID: 6939626936724011826}
   _stats: {fileID: 6939626936724011825}
   _moveRadius: 10
@@ -880,6 +881,7 @@ MonoBehaviour:
   _aggressive: 1
   _rewardExp: 50
   _viewDistance: 5
+  _agroDistance: 5
   _reviveDelay: 5
 --- !u!114 &5095044873837054855
 MonoBehaviour:
@@ -920,6 +922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2744683b7c4e1458e5d915c60ad99c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackDistance: 0
   _attackSpeed: 1
 --- !u!114 &1522036759616602641
 MonoBehaviour:
@@ -936,3 +939,20 @@ MonoBehaviour:
   _animator: {fileID: 107780660380629377}
   _unit: {fileID: 6939626936724011824}
   _combat: {fileID: 271702481078178456}
+--- !u!114 &114910065819055442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6939626936724011784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f1f714e69c5d084994b5c4da8e05390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _visRange: 35
+  _visUpdateInterval: 1
+  _visMask:
+    serializedVersion: 2
+    m_Bits: 1024

@@ -482,6 +482,7 @@ GameObject:
   - component: {fileID: 6011012460395442329}
   - component: {fileID: 1646332993279673212}
   - component: {fileID: 1048203158095309772}
+  - component: {fileID: 114451769309563502}
   m_Layer: 0
   m_Name: GhostEnemy_Violet
   m_TagString: Untagged
@@ -682,7 +683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractionTransform: {fileID: 2154792064114387537}
-  Radius: 2
+  _radius: 2
   _motor: {fileID: 2154792064114387562}
   _stats: {fileID: 2154792064114387561}
   _moveRadius: 10
@@ -691,6 +692,7 @@ MonoBehaviour:
   _aggressive: 1
   _rewardExp: 50
   _viewDistance: 5
+  _agroDistance: 5
   _reviveDelay: 5
 --- !u!114 &4259532545383684831
 MonoBehaviour:
@@ -731,6 +733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2744683b7c4e1458e5d915c60ad99c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackDistance: 0
   _attackSpeed: 1
 --- !u!114 &1048203158095309772
 MonoBehaviour:
@@ -747,6 +750,23 @@ MonoBehaviour:
   _animator: {fileID: 1357915669336965076}
   _unit: {fileID: 2154792064114387560}
   _combat: {fileID: 1646332993279673212}
+--- !u!114 &114451769309563502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2154792064114387536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f1f714e69c5d084994b5c4da8e05390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _visRange: 35
+  _visUpdateInterval: 1
+  _visMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &2154792064245968690
 GameObject:
   m_ObjectHideFlags: 0

@@ -894,6 +894,7 @@ GameObject:
   - component: {fileID: 3374684977961513703}
   - component: {fileID: 3012874476245490073}
   - component: {fileID: 114586049729478204}
+  - component: {fileID: 114245435946250412}
   m_Layer: 0
   m_Name: RabbitEnemy_Green
   m_TagString: Untagged
@@ -1094,7 +1095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractionTransform: {fileID: 4558520893623556451}
-  Radius: 2
+  _radius: 2
   _motor: {fileID: 4558520893623556440}
   _stats: {fileID: 4558520893623556443}
   _moveRadius: 10
@@ -1103,6 +1104,7 @@ MonoBehaviour:
   _aggressive: 1
   _rewardExp: 50
   _viewDistance: 5
+  _agroDistance: 5
   _reviveDelay: 5
 --- !u!114 &1853410633676089837
 MonoBehaviour:
@@ -1143,6 +1145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2744683b7c4e1458e5d915c60ad99c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackDistance: 0
   _attackSpeed: 1
 --- !u!114 &3012874476245490073
 MonoBehaviour:
@@ -1176,3 +1179,20 @@ MonoBehaviour:
     Rate: 50
   - Item: {fileID: 11400000, guid: 6bbb512a8fc098c4aad8f23fb2e14227, type: 2}
     Rate: 10
+--- !u!114 &114245435946250412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4558520893623556450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f1f714e69c5d084994b5c4da8e05390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _visRange: 35
+  _visUpdateInterval: 1
+  _visMask:
+    serializedVersion: 2
+    m_Bits: 1024

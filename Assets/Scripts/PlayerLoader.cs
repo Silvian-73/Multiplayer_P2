@@ -4,27 +4,28 @@ using UnityEngine.Networking;
 public class PlayerLoader : NetworkBehaviour
 {
     [SerializeField] private Player _player;
-    [SerializeField] private GameObject _unitPrefab;
     [SerializeField] private PlayerController _controller;
 
     public Character CreateCharacter()
     {
         UserAccount acc = AccountManager.GetAccount(connectionToClient);
+        GameObject unitPrefab = NetworkManager.singleton.spawnPrefabs.Find(x => x.GetComponent<NetworkIdentity>().assetId.Equals(acc.Data.CharacterHash));
         GameObject unit;
         Character tempCharacter;
         if (acc.Data.JustCreated)
         {
-            unit = Instantiate(_unitPrefab, transform.position, Quaternion.identity, transform);
+            unit = Instantiate(unitPrefab, transform.position, Quaternion.identity, transform);
             acc.Data.JustCreated = false;
             acc.Data.PosCharacter = transform.position;
             acc.Data.SpawnPosition = transform.position;
         }
         else
         {
-            unit = Instantiate(_unitPrefab, acc.Data.PosCharacter, Quaternion.identity, transform);
+            unit = Instantiate(unitPrefab, acc.Data.PosCharacter, Quaternion.identity, transform);
         }
         tempCharacter = unit.GetComponent<Character>();
         tempCharacter.SetRespawnPosition(acc.Data.SpawnPosition);
+        tempCharacter.Player = _player;
         NetworkServer.Spawn(unit);
         TargetLinkCharacter(connectionToClient, unit.GetComponent<NetworkIdentity>());
         return tempCharacter;
