@@ -22,7 +22,9 @@ public class Enemy : Unit
 
     private float _reviveTime;
     private List<Character> _enemies = new List<Character>();
+
     private Collider[] _bufferColliders = new Collider[64];
+    private int _targetColliders;
 
     void Start()
     {
@@ -110,18 +112,15 @@ public class Enemy : Unit
     }
     void FindEnemy()
     {
-        Physics.OverlapSphereNonAlloc(transform.position, _agroDistance, _bufferColliders, 1 << LayerMask.NameToLayer("Player"));
-        for (int i = 0; i < _bufferColliders.Length; i++)
+        _targetColliders = Physics.OverlapSphereNonAlloc(transform.position, _agroDistance, _bufferColliders, 1 << LayerMask.NameToLayer("Player"));
+        for (int i = 0; i < _targetColliders; i++)
         {
-            if (_bufferColliders[i] != null)
+            Interactable interactable = _bufferColliders[i].GetComponent<Interactable>();
+            if (interactable != null && interactable.HasInteract)
             {
-                Interactable interactable = _bufferColliders[i].GetComponent<Interactable>();
-                if (interactable != null && interactable.HasInteract)
-                {
-                    SetFocus(interactable);
-                    break;
-                }
-            } 
+                SetFocus(interactable);
+                break;
+            }
         }
     }
     

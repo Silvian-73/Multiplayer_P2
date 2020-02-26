@@ -10,6 +10,9 @@ public class MeteorStrikeSkill : Skill
     [SerializeField] private ParticleSystem _castEffect;
     [SerializeField] private ParticleSystem _meteorStrikeEffect;
 
+    private Collider[] _bufferColliders = new Collider[64];
+    private int _targetColliders;
+
     protected override void Start() 
     {
         base.Start();
@@ -40,10 +43,10 @@ public class MeteorStrikeSkill : Skill
     {
         if (isServer) 
         {
-            Collider[] colliders = Physics.OverlapSphere(_target.transform.position, _radius, _enemyMask);
-            for (int i = 0; i < colliders.Length; i++) 
+            _targetColliders = Physics.OverlapSphereNonAlloc(_target.transform.position, _radius,_bufferColliders, _enemyMask);
+            for (int i = 0; i < _targetColliders; i++) 
             {
-                Unit enemy = colliders[i].GetComponent<Unit>();
+                Unit enemy = _bufferColliders[i].GetComponent<Unit>();
                 if (enemy != null && enemy.HasInteract)
                 {
                     enemy.TakeDamage(_unit.gameObject, _damage);

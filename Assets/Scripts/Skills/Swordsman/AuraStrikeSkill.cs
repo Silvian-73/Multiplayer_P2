@@ -8,6 +8,7 @@ public class AuraStrikeSkill : Skill
     [SerializeField] private ParticleSystem _auraEffect;
 
     private Collider[] _bufferColliders = new Collider[64];
+    private int _targetColliders;
 
     protected override void OnUse()
     {
@@ -21,17 +22,15 @@ public class AuraStrikeSkill : Skill
     {
         if (isServer)
         {
-            Physics.OverlapSphereNonAlloc(transform.position, _radius, _bufferColliders, _enemyMask);
-            for (int i = 0; i < _bufferColliders.Length; i++)
+            _targetColliders = Physics.OverlapSphereNonAlloc(transform.position, _radius, _bufferColliders, _enemyMask);
+            for (int i = 0; i < _targetColliders; i++)
             {
-                if (_bufferColliders[i] != null)
+                Unit enemy = _bufferColliders[i].GetComponent<Unit>();
+                if (enemy != null && enemy.HasInteract)
                 {
-                    Unit enemy = _bufferColliders[i].GetComponent<Unit>();
-                    if (enemy != null && enemy.HasInteract)
-                    {
-                        enemy.TakeDamage(_unit.gameObject, _damage);
-                    }
+                    enemy.TakeDamage(_unit.gameObject, _damage);
                 }
+                
             }
         }
         else

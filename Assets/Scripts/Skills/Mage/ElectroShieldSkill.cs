@@ -8,6 +8,9 @@ public class ElectroShieldSkill : Skill
     [SerializeField] private LayerMask _enemyMask;
     [SerializeField] private ParticleSystem _electroEffect;
 
+    private Collider[] _bufferColliders = new Collider[64];
+    private int _targetColliders;
+
     protected override void OnUse() 
     {
         if (isServer) 
@@ -21,10 +24,10 @@ public class ElectroShieldSkill : Skill
     {
         if (isServer) 
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, _radius, _enemyMask);
-            for (int i = 0; i < colliders.Length; i++) 
+            _targetColliders = Physics.OverlapSphereNonAlloc(transform.position, _radius,_bufferColliders, _enemyMask);
+            for (int i = 0; i < _targetColliders; i++) 
             {
-                Unit enemy = colliders[i].GetComponent<Unit>();
+                Unit enemy = _bufferColliders[i].GetComponent<Unit>();
                 if (enemy != null && enemy.HasInteract)
                 {
                     enemy.TakeDamage(_unit.gameObject, _damage);
