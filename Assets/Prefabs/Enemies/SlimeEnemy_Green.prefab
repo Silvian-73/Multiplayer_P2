@@ -234,9 +234,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ca67ac3c701ec94183c17d596339bb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 10
+  _maxHealth: 30
   Damage:
-    _baseValue: 5
+    _baseValue: 3
   Armor:
     _baseValue: 0
   MoveSpeed:
@@ -257,6 +257,8 @@ MonoBehaviour:
   _radius: 2
   _motor: {fileID: 4323798485462757041}
   _stats: {fileID: 4323798485462757042}
+  UnitSkills:
+    _skills: []
   _moveRadius: 10
   _minMoveDelay: 4
   _maxMoveDelay: 12
