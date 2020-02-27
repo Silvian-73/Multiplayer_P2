@@ -68,6 +68,7 @@ public class Player : MonoBehaviour
         {
             UserAccount account = AccountManager.GetAccount(GetComponent<NetworkIdentity>().connectionToClient);
             _character.Stats.Load(account.Data);
+            _character.UnitSkills.Load(account.Data);
             _progress.Load(account.Data);
             _inventory.Load(account.Data);
             _equipment.Load(account.Data);
@@ -80,6 +81,9 @@ public class Player : MonoBehaviour
             InventoryUI.Instance.SetInventory(_inventory);
             EquipmentUI.Instance.SetEquipment(_equipment);
             StatsUI.Instance.SetManager(_statsManager);
+            SkillsPanel.Instance.SetSkills(character.UnitSkills);
+            SkillTree.Instance.SetCharacter(character);
+            SkillTree.Instance.SetManager(_statsManager);
         }
     }
 }

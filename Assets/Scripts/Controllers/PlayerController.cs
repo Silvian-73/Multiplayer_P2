@@ -20,7 +20,6 @@ public class PlayerController : NetworkBehaviour {
         if (isLocalPlayer)
         {
             _cam.GetComponent<CameraController>().target = character.transform;
-            SkillsPanel.Instance.SetSkills(character.UnitSkills);
         }
     }
 

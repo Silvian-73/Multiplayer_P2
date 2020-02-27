@@ -1,12 +1,21 @@
 ﻿using UnityEngine;
 
-public class AimingShotSkill : Skill 
+public class AimingShotSkill : UpgradeableSkill 
 {
 
     [SerializeField] private float _range = 7f;
     [SerializeField] private int _damage = 25;
     [SerializeField] private ParticleSystem _castEffect;
     [SerializeField] private ParticleSystem _aimingShotEffect;
+
+    public override int Level
+    {
+        set
+        {
+            base.Level = value;
+            _damage = 25 + 5 * Level;
+        }
+    }
 
     protected override void Start() 
     {

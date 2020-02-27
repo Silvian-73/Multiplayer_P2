@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ElectroShieldSkill : Skill 
+public class ElectroShieldSkill : UpgradeableSkill 
 {
 
     [SerializeField] private int _damage;
@@ -11,6 +11,14 @@ public class ElectroShieldSkill : Skill
     private Collider[] _bufferColliders = new Collider[64];
     private int _targetColliders;
 
+    public override int Level
+    {
+        set
+        {
+            base.Level = value;
+            _damage = 25 + 5 * Level;
+        }
+    }
     protected override void OnUse() 
     {
         if (isServer) 

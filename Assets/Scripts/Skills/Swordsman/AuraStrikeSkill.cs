@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class AuraStrikeSkill : Skill
+public class AuraStrikeSkill : UpgradeableSkill
 {
     [SerializeField] private int _damage;
     [SerializeField] private float _radius;
@@ -9,6 +9,15 @@ public class AuraStrikeSkill : Skill
 
     private Collider[] _bufferColliders = new Collider[64];
     private int _targetColliders;
+
+    public override int Level
+    {
+        set
+        {
+            base.Level = value;
+            _damage = 10 + Level;
+        }
+    }
 
     protected override void OnUse()
     {

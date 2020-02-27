@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class MeteorStrikeSkill : Skill 
+public class MeteorStrikeSkill : UpgradeableSkill 
 {
 
     [SerializeField] private float _range = 7f;
@@ -13,6 +13,15 @@ public class MeteorStrikeSkill : Skill
     private Collider[] _bufferColliders = new Collider[64];
     private int _targetColliders;
 
+    public override int Level
+    {
+        set
+        {
+            base.Level = value;
+            _damage = 25 + 7 * Level;
+            _range = Level < 3 ? 7f : 10f;
+        }
+    }
     protected override void Start() 
     {
         base.Start();

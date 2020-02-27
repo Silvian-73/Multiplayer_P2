@@ -1,10 +1,18 @@
 ﻿using UnityEngine;
 
-public class FrontWarpSkill : Skill
+public class FrontWarpSkill : UpgradeableSkill
 {
 
     [SerializeField] private float _warpDistance = 7f;
 
+    public override int Level
+    {
+        set
+        {
+            base.Level = value;
+            _warpDistance = 7f + 0.5f * Level;
+        }
+    }
     protected override void OnUse()
     {
         if (isServer)

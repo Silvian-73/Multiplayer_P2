@@ -13,9 +13,11 @@ public class UserData
     public Vector3 SpawnPosition;
     public List<int> Inventory = new List<int>();
     public List<int> Equipment = new List<int>();
+    public List<int> skills = new List<int>();
 
     public int Level;
     public int StatPoints;
+    public int SkillPoints;
     public float Exp;
     public float NextLevelExp;
 

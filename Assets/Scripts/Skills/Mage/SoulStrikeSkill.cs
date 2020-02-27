@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SoulStrikeSkill : Skill 
+public class SoulStrikeSkill : UpgradeableSkill 
 {
 
     [SerializeField] private float _range = 7f;
@@ -8,6 +8,15 @@ public class SoulStrikeSkill : Skill
     [SerializeField] private ParticleSystem _castEffect;
     [SerializeField] private ParticleSystem _soulStrikeEffect;
 
+    public override int Level
+    {
+        set
+        {
+            base.Level = value;
+            _damage = 25 + 5 * Level;
+            _range = Level < 3 ? 7f : 10f;
+        }
+    }
     protected override void Start() 
     {
         base.Start();
