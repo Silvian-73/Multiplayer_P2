@@ -11,6 +11,9 @@ public class PlayerVisibility : NetworkBehaviour
     private Transform _transform;
     private float _visUpdateTime;
 
+    private Collider[] _bufferColliders = new Collider[128];
+    private int _targetColliders;
+
     public override void OnStartServer()
     {
         _transform = transform;
@@ -29,10 +32,10 @@ public class PlayerVisibility : NetworkBehaviour
     }
     public override bool OnRebuildObservers(HashSet<NetworkConnection> observers, bool initialize)
     {
-        Collider[] hits = Physics.OverlapSphere(_transform.position, _visRange, _visMask);
-        foreach (Collider hit in hits)
+        _targetColliders = Physics.OverlapSphereNonAlloc(_transform.position, _visRange, _bufferColliders, _visMask);
+        for (int i=0; i < _targetColliders; i++)
         {
-            Character character = hit.GetComponent<Character>();
+            Character character = _bufferColliders[i].GetComponent<Character>();
             if (character != null && character.Player != null)
             {
                 NetworkIdentity identity = character.Player.GetComponent<NetworkIdentity>();

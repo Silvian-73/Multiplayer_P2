@@ -18,7 +18,7 @@ public class Character : Unit
     { 
         get 
         { 
-            return _stats as PlayerStats; 
+            return base.Stats as PlayerStats; 
         } 
     }
 
@@ -33,7 +33,7 @@ public class Character : Unit
             if (isServer)
             {
                 Stats.SetHealthRate(1);
-                _motor.MoveToPoint(_startPosition);
+                Motor.MoveToPoint(_startPosition);
             }
         }
     }
@@ -97,7 +97,7 @@ public class Character : Unit
     {
         if (!_isDead)
         {
-            _motor.MoveToPoint(point);
+            Motor.MoveToPoint(point);
         }
     }
     public void SetNewFocus(Interactable newFocus)

@@ -10,18 +10,35 @@ public class Unit : Interactable
     public event Action EventOnDie;
     public event Action EventOnRevive;
 
-    [SerializeField] protected UnitMotor _motor;
-    [SerializeField] protected UnitStats _stats;
+    [SerializeField] private UnitMotor _motor;
+    [SerializeField] private UnitStats _stats;
+
+    public UnitMotor Motor 
+    { 
+        get 
+        { 
+            return _motor; 
+        } 
+    }
+
+    public UnitStats Stats 
+    { 
+        get 
+        { 
+            return _stats; 
+        } 
+    }
+    public UnitSkills UnitSkills;
+
     protected float _interactDistance;
     protected bool _isDead;
     protected Interactable _focus;
-
-    public UnitStats Stats
-    {
-        get
-        {
-            return _stats;
-        }
+    public Interactable Focus
+    { 
+        get 
+        { 
+            return _focus; 
+        } 
     }
 
     void Update()
@@ -85,7 +102,7 @@ public class Unit : Interactable
             RpcRevive();
         }
     }
-    protected virtual void SetFocus(Interactable newFocus)
+    public virtual void SetFocus(Interactable newFocus)
     {
         if (newFocus != _focus)
         {
@@ -94,7 +111,7 @@ public class Unit : Interactable
             _motor.FollowTarget(newFocus, _interactDistance);
         }
     }
-    protected virtual void RemoveFocus()
+    public virtual void RemoveFocus()
     {
         _focus = null;
         _motor.StopFollowingTarget();
@@ -126,5 +143,17 @@ public class Unit : Interactable
     protected virtual void DamageWithCombat(GameObject user)
     {
         EventOnDamage();
+    }
+    public void TakeDamage(GameObject user, int damage)
+    {
+        _stats.TakeDamage(damage);
+        DamageWithCombat(user);
+    }
+    public void UseSkill(int skillNum)
+    {
+        if (!_isDead && skillNum < UnitSkills.Count)
+        {
+            UnitSkills[skillNum].Use(this);
+        }
     }
 }
