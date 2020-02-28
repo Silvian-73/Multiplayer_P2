@@ -3,14 +3,16 @@
 public class FrontWarpSkill : UpgradeableSkill
 {
 
-    [SerializeField] private float _warpDistance = 7f;
+    [SerializeField] private float _baseWarpDistance = 7f;
+    [SerializeField] private float _warpDistanceByLevel = 0.5f;
+    private float _warpDistance;
 
     public override int Level
     {
         set
         {
             base.Level = value;
-            _warpDistance = 7f + 0.5f * Level;
+            _warpDistance = _baseWarpDistance + _warpDistanceByLevel * Level;
         }
     }
     protected override void OnUse()

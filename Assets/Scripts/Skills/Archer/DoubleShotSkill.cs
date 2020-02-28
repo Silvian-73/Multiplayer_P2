@@ -4,7 +4,9 @@ public class DoubleShotSkill : UpgradeableSkill
 {
 
     [SerializeField] private float _range = 7f;
-    [SerializeField] private int _damage = 25;
+    [SerializeField] private int _baseDamage = 25;
+    [SerializeField] private int _damageByLevel = 3;
+    private int _damage;
     [SerializeField] private ParticleSystem _doubleShotEffect;
 
     public override int Level
@@ -12,7 +14,7 @@ public class DoubleShotSkill : UpgradeableSkill
         set
         {
             base.Level = value;
-            _damage = 25 + 3 * Level;
+            _damage = _baseDamage + _damageByLevel * Level;
         }
     }
     protected override void Start() 

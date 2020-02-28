@@ -2,7 +2,8 @@
 
 public class HideSkill : UpgradeableSkill 
 {
-
+    [SerializeField] private float _initialCastTime = 10f;
+    [SerializeField] private float _castTimeLimit = 1f;
     [SerializeField] private ParticleSystem _hideEffect;
 
     public override int Level
@@ -10,7 +11,7 @@ public class HideSkill : UpgradeableSkill
         set
         {
             base.Level = value;
-            _castTime = Level < 10 ? 10 - Level : 1;
+            _castTime = Mathf.Clamp(_initialCastTime - Level, _castTimeLimit, _initialCastTime);       
         }
     }
 

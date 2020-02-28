@@ -2,11 +2,13 @@
 
 public class AuraStrikeSkill : UpgradeableSkill
 {
-    [SerializeField] private int _damage;
+    [SerializeField] private int _baseDamage = 10;
+    [SerializeField] private int _damageByLevel = 1;
     [SerializeField] private float _radius;
     [SerializeField] private LayerMask _enemyMask;
     [SerializeField] private ParticleSystem _auraEffect;
 
+    private int _damage;
     private Collider[] _bufferColliders = new Collider[64];
     private int _targetColliders;
 
@@ -15,7 +17,7 @@ public class AuraStrikeSkill : UpgradeableSkill
         set
         {
             base.Level = value;
-            _damage = 10 + Level;
+            _damage = _baseDamage + _damageByLevel * Level;
         }
     }
 

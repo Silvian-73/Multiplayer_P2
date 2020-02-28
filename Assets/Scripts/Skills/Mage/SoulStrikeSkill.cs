@@ -3,8 +3,13 @@
 public class SoulStrikeSkill : UpgradeableSkill 
 {
 
-    [SerializeField] private float _range = 7f;
-    [SerializeField] private int _damage = 25;
+    [SerializeField] private float _baseRange = 7f;
+    [SerializeField] private float _upgradedRange = 10f;
+    [SerializeField] private int _levelToUpgrade = 3;
+    [SerializeField] private int _baseDamage = 25;
+    [SerializeField] private int _damagePerLevel = 5;
+    private float _range;
+    private int _damage;
     [SerializeField] private ParticleSystem _castEffect;
     [SerializeField] private ParticleSystem _soulStrikeEffect;
 
@@ -13,8 +18,8 @@ public class SoulStrikeSkill : UpgradeableSkill
         set
         {
             base.Level = value;
-            _damage = 25 + 5 * Level;
-            _range = Level < 3 ? 7f : 10f;
+            _damage = _baseDamage + _damagePerLevel * Level;
+            _range = Level < _levelToUpgrade ? _baseRange : _upgradedRange;
         }
     }
     protected override void Start() 
