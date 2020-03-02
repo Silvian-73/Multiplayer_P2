@@ -11838,7 +11838,7 @@ MonoBehaviour:
   _enemyMask:
     serializedVersion: 2
     m_Bits: 1
-  _auraEffect: {fileID: 0}
+  _auraEffect: {fileID: 4161229772916619778}
 --- !u!114 &7275873422297267665
 MonoBehaviour:
   m_ObjectHideFlags: 0

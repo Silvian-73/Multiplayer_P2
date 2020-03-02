@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 
-public class MeteorStrikeSkill : Skill 
+public class MeteorStrikeSkill : UpgradeableSkill 
 {
 
-    [SerializeField] private float _range = 7f;
+    [SerializeField] private float _baseRange = 7f;
+    [SerializeField] private float _upgradedRange = 10f;
+    [SerializeField] private int _levelToUpgrade = 3;
     [SerializeField] private float _radius = 3f;
-    [SerializeField] private int _damage = 25;
+    [SerializeField] private int _baseDamage = 25;
+    [SerializeField] private int _damageByLevel = 7;
+    private float _range;
+    private int _damage;
     [SerializeField] private LayerMask _enemyMask;
     [SerializeField] private ParticleSystem _castEffect;
     [SerializeField] private ParticleSystem _meteorStrikeEffect;
@@ -13,6 +18,15 @@ public class MeteorStrikeSkill : Skill
     private Collider[] _bufferColliders = new Collider[64];
     private int _targetColliders;
 
+    public override int Level
+    {
+        set
+        {
+            base.Level = value;
+            _damage = _baseDamage + _damageByLevel * Level;
+            _range = Level < _levelToUpgrade ? _baseRange : _upgradedRange;
+        }
+    }
     protected override void Start() 
     {
         base.Start();

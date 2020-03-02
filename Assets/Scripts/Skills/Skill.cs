@@ -6,8 +6,8 @@ public class Skill : NetworkBehaviour
 {
     public Sprite icon;
 
-    [SerializeField] private float _castTime = 1f;
-    [SerializeField] private float _cooldown = 1f;
+    [SerializeField] protected float _castTime = 1f;
+    [SerializeField] protected float _cooldown = 1f;
     [HideInInspector] public float CastDelay;
     [HideInInspector] public float CooldownDelay;
     protected Unit _unit;

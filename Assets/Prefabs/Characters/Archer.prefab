@@ -21655,7 +21655,8 @@ MonoBehaviour:
   CastDelay: 0
   CooldownDelay: 0
   _range: 7
-  _damage: 25
+  _baseDamage: 25
+  _damageByLevel: 5
   _castEffect: {fileID: 7712370611709281815}
   _aimingShotEffect: {fileID: 3344203043623648013}
 --- !u!114 &7533000341801538274
@@ -21676,7 +21677,8 @@ MonoBehaviour:
   CastDelay: 0
   CooldownDelay: 0
   _range: 7
-  _damage: 25
+  _baseDamage: 25
+  _damageByLevel: 3
   _doubleShotEffect: {fileID: 6845828300863385679}
 --- !u!114 &5158466221367601689
 MonoBehaviour:
@@ -21691,10 +21693,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 21300004, guid: 9b36398ba5aa47940bdd92db1e4b0d4e, type: 3}
-  _castTime: 1
+  _castTime: 10
   _cooldown: 1
   CastDelay: 0
   CooldownDelay: 0
+  _initialCastTime: 10
+  _castTimeLimit: 1
   _hideEffect: {fileID: 4609364277216242612}
 --- !u!1 &8948975879563968785
 GameObject:

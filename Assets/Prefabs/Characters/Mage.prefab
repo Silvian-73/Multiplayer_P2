@@ -21150,8 +21150,11 @@ MonoBehaviour:
   _cooldown: 1
   CastDelay: 0
   CooldownDelay: 0
-  _range: 7
-  _damage: 25
+  _baseRange: 7
+  _upgradedRange: 10
+  _levelToUpgrade: 3
+  _baseDamage: 25
+  _damagePerLevel: 5
   _castEffect: {fileID: 3198980714985772099}
   _soulStrikeEffect: {fileID: 1513183551465421232}
 --- !u!114 &114867649762111402
@@ -21171,9 +21174,12 @@ MonoBehaviour:
   _cooldown: 1
   CastDelay: 0
   CooldownDelay: 0
-  _range: 7
+  _baseRange: 7
+  _upgradedRange: 10
+  _levelToUpgrade: 3
   _radius: 3
-  _damage: 25
+  _baseDamage: 25
+  _damageByLevel: 7
   _enemyMask:
     serializedVersion: 2
     m_Bits: 1
@@ -21196,8 +21202,9 @@ MonoBehaviour:
   _cooldown: 1
   CastDelay: 0
   CooldownDelay: 0
-  _damage: 0
-  _radius: 0
+  _baseDamage: 25
+  _damageByLevel: 5
+  _radius: 2
   _enemyMask:
     serializedVersion: 2
     m_Bits: 1

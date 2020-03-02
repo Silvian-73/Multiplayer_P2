@@ -1,12 +1,22 @@
 ﻿using UnityEngine;
 
-public class DoubleShotSkill : Skill 
+public class DoubleShotSkill : UpgradeableSkill
 {
 
     [SerializeField] private float _range = 7f;
-    [SerializeField] private int _damage = 25;
+    [SerializeField] private int _baseDamage = 25;
+    [SerializeField] private int _damageByLevel = 3;
+    private int _damage;
     [SerializeField] private ParticleSystem _doubleShotEffect;
 
+    public override int Level
+    {
+        set
+        {
+            base.Level = value;
+            _damage = _baseDamage + _damageByLevel * Level;
+        }
+    }
     protected override void Start() 
     {
         base.Start();
