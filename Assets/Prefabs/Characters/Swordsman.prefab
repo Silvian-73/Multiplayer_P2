@@ -11531,6 +11531,7 @@ GameObject:
   - component: {fileID: 7799786196082238775}
   - component: {fileID: 7275873422297267665}
   - component: {fileID: 9034167215775371443}
+  - component: {fileID: 6828704567668097766}
   m_Layer: 10
   m_Name: Swordsman
   m_TagString: Untagged
@@ -11833,7 +11834,8 @@ MonoBehaviour:
   _cooldown: 10
   CastDelay: 0
   CooldownDelay: 0
-  _damage: 100
+  _baseDamage: 10
+  _damageByLevel: 1
   _radius: 2
   _enemyMask:
     serializedVersion: 2
@@ -11856,7 +11858,8 @@ MonoBehaviour:
   _cooldown: 0.8
   CastDelay: 0
   CooldownDelay: 0
-  _warpDistance: 7
+  _baseWarpDistance: 7
+  _warpDistanceByLevel: 0.5
 --- !u!114 &9034167215775371443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11874,8 +11877,22 @@ MonoBehaviour:
   _cooldown: 5
   CastDelay: 0
   CooldownDelay: 0
-  _healAmount: 15
+  _baseHealAmount: 10
+  _healAmountByLevel: 1
   _particle: {fileID: 8673678294139177148}
+--- !u!114 &6828704567668097766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8948975879366018842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172ab726ce1008c42b914abc34b826e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Local
 --- !u!1 &8948975879563968785
 GameObject:
   m_ObjectHideFlags: 0

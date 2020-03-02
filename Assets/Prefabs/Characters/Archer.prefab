@@ -21352,6 +21352,7 @@ GameObject:
   - component: {fileID: 5034820945383820383}
   - component: {fileID: 7533000341801538274}
   - component: {fileID: 5158466221367601689}
+  - component: {fileID: 3049084698779267264}
   m_Layer: 10
   m_Name: Archer
   m_TagString: Untagged
@@ -21700,6 +21701,19 @@ MonoBehaviour:
   _initialCastTime: 10
   _castTimeLimit: 1
   _hideEffect: {fileID: 4609364277216242612}
+--- !u!114 &3049084698779267264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8948975879366018842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172ab726ce1008c42b914abc34b826e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Local
 --- !u!1 &8948975879563968785
 GameObject:
   m_ObjectHideFlags: 0

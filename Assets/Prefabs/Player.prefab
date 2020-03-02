@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 114696419686095426}
   - component: {fileID: 114519574189691728}
   - component: {fileID: 114716416402472184}
+  - component: {fileID: 114825542095174792}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -84,8 +85,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 114696419686095426}
-  _unitPrefab: {fileID: 8948975879366018842, guid: 26a8bf56a0ead2044ac311d6a5d9f1b8,
-    type: 3}
   _controller: {fileID: 114943920245064538}
 --- !u!114 &114943920245064538
 MonoBehaviour:
@@ -163,6 +162,7 @@ MonoBehaviour:
   MoveSpeed: 0
   Level: 0
   StatPoints: 0
+  SkillPoints: 0
   Exp: 0
   NextLevelExp: 0
   Player: {fileID: 0}
@@ -178,3 +178,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42682adc0be272438ceb29881c7c7a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114825542095174792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4533052244593973801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 507fd40dfedb4dc4bbede5140925b405, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Channels: []
