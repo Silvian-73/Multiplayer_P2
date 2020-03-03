@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 public class ChatChannel : NetworkBehaviour
 {
 
-    public new string Name;
+    public new string name;
 
     public virtual void SendFromChanel(ChatMessage message)
     {
