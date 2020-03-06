@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class EquipmentUI : MonoBehaviour
 {
@@ -39,7 +40,7 @@ public class EquipmentUI : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Equipment"))
+        if (Input.GetButtonDown("Equipment") && EventSystem.current.currentSelectedGameObject == null)
         {
             _equipmentUI.SetActive(!_equipmentUI.activeSelf);
         }

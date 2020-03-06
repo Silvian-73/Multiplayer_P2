@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class InventoryUI : MonoBehaviour
     private Inventory _inventory;
     private void Update()
     {
-        if (Input.GetButtonDown("Inventory"))
+        if (Input.GetButtonDown("Inventory") && EventSystem.current.currentSelectedGameObject == null)
         {
             _inventoryUI.SetActive(!_inventoryUI.activeSelf);
         }
